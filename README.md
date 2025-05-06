@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# 🧠 useMemo Example – Expensive Calculation Optimizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React project demonstrates how to use the `useMemo` hook to optimize performance by **memoizing the result of an expensive calculation**. The app includes a number input and a theme toggle (light/dark mode). Without `useMemo`, unnecessary re-renders would re-run the slow function on every update.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🔍 About `useMemo`
 
-### `npm start`
+React's `useMemo` is used to **memoize** (or cache) the result of a function so that it is **only recalculated when its dependencies change**. This is especially useful for expensive calculations or operations that would otherwise slow down performance on re-renders.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🧠 Why use `useMemo` here?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- We simulate a slow calculation using a `for` loop.
+- When toggling the theme, we **don’t want to re-run the slow calculation**.
+- `useMemo` ensures the expensive calculation only runs **when the number input changes**.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Features
 
-### `npm run build`
+- 📥 User enters a number, and the app calculates a result (simulated slow calculation)
+- 🌗 Toggle between light and dark themes
+- ⚡ Fast theme switching with no recalculation (thanks to `useMemo`)
+- ✅ Clear and minimal UI
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🧪 How It Works
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. You enter a number → the app runs a slow doubling function.
+2. The result is **cached using `useMemo`**.
+3. Toggling the theme doesn't re-trigger the calculation.
+4. The function is only re-run when the number input changes.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🛠 Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React (with Hooks)
+- JavaScript (ES6+)
+- CSS
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🧩 Code Sample
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```jsx
+const doubleNumber = useMemo(() => slowFunction(number), [number]);
